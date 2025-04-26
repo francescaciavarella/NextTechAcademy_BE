@@ -1,0 +1,25 @@
+package com.infobasic.ciavarella.nexttechacademy.spring_jwt.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Table(name = "roles")
+@Data
+public class Role {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+
+  @Enumerated(EnumType.STRING)
+  @Column(length = 20)
+  private ERole name;
+
+  public ERole getName() {
+    return name;
+  }
+
+  public void setName(ERole name) {
+    this.name = name;
+  }
+}

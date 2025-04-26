@@ -15,6 +15,9 @@ public class ExamResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resultId;
 
+    private double score;
+    private boolean passed;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;

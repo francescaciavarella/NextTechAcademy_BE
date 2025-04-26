@@ -1,5 +1,6 @@
 package com.infobasic.ciavarella.nexttechacademy.model;
 
+import com.infobasic.ciavarella.nexttechacademy.spring_jwt.model.AuthUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -46,4 +47,16 @@ public class Teacher {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Course> courses = new HashSet<>();
+
+    @OneToOne
+    private AuthUser authUser;
+
+    // Getters and setters
+    public AuthUser getAuthUser() {
+        return authUser;
+    }
+
+    public void setAuthUser(AuthUser authUser) {
+        this.authUser = authUser;
+    }
 }

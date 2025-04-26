@@ -18,7 +18,7 @@ public class Payment {
     private Long paymentId;
     private LocalDate paymentDate;
     private int amount;
-    private String paymentMetod;
+    private String paymentMethod;
     private String description;
 
     @ManyToOne
