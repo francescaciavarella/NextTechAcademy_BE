@@ -57,7 +57,7 @@ public class Student {
     @OneToMany(mappedBy = "student")
     private Set<Payment> payments = new HashSet<>();
 
-    @OneToOne
+   @OneToOne
     private AuthUser authUser;
 
     // Getters and setters

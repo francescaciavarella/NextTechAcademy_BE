@@ -42,14 +42,18 @@ public class TeacherService {
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher not found with email: " + email));
     }
 
-    @Transactional
+    public Teacher saveTeacher(Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
+
+    /*@Transactional
     public Teacher createTeacher(Teacher teacher, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
 
         teacher.setUser(user);
         return teacherRepository.save(teacher);
-    }
+    }*/
 
     @Transactional
     public Teacher updateTeacher(Long teacherId, Teacher teacherDetails) {

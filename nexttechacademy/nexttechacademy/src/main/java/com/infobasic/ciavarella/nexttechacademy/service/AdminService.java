@@ -37,14 +37,18 @@ public class AdminService {
                 .orElseThrow(() -> new ResourceNotFoundException("Admin not found with email: " + email));
     }
 
-    @Transactional
+    public Admin saveAdmin(Admin admin) {
+        return adminRepository.save(admin);
+    }
+
+    /*@Transactional
     public Admin createAdmin(Admin admin, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
 
         admin.setUser(user);
         return adminRepository.save(admin);
-    }
+    }*/
 
     @Transactional
     public Admin updateAdmin(Long adminId, Admin adminDetails) {

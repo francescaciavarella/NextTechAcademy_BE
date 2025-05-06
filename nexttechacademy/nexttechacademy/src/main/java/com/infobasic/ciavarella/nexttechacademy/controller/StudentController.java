@@ -46,11 +46,11 @@ public class StudentController {
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Student> createStudent(
+    @PostMapping("/student/{studentId}")
+    public ResponseEntity<Student> saveStudent(
             @RequestBody Student student,
             @RequestParam Long userId) {
-        Student createdStudent = studentService.createStudent(student, userId);
+        Student createdStudent = studentService.saveStudent(student);
         return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
     }
 

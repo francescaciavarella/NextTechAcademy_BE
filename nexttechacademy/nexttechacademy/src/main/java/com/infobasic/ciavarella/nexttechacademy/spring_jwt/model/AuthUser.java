@@ -18,11 +18,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "users", 
-    uniqueConstraints = { 
-      @UniqueConstraint(columnNames = "username"),
-      @UniqueConstraint(columnNames = "email") 
-    })
+@Table(name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "username"),
+                @UniqueConstraint(columnNames = "email")
+        })
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,6 +30,10 @@ public class AuthUser {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @NotBlank
+  @Size(max = 20)
+  private String username;
 
   @NotBlank
   @Size(max = 50)
@@ -41,9 +45,10 @@ public class AuthUser {
   private String password;
 
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(  name = "user_roles", 
-        joinColumns = @JoinColumn(name = "user_id"), 
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
+  @JoinTable(
+          name = "user_roles",
+          joinColumns = @JoinColumn(name = "user_id"),
+          inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
   @OneToOne(mappedBy = "authUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -58,48 +63,30 @@ public class AuthUser {
   @JsonManagedReference(value = "admin-authUser")
   private Admin admin;
 
+  @NotNull
+  @Column(name = "registration_date") // Explicitly specify the column name
+  private LocalDate registrationDate = LocalDate.now();
 
-  public AuthUser(String email, String password) {
+  // Constructor with username, email, password
+  public AuthUser(String username, String email, String password) {
+    this.username = username;
     this.email = email;
     this.password = password;
   }
 
+  // Constructor with email, password, role
   public AuthUser(String email, String password, Role role) {
+    // Generate a username from email if not provided
+    this.username = email.split("@")[0];
     this.email = email;
     this.password = password;
     this.roles.add(role);
   }
 
-  // Getter e Setter espliciti per assicurare la compatibilità con Lombok
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
+  // Constructor with email and password
+  public AuthUser(String email, String password) {
+    this.username = email.split("@")[0];
     this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
     this.password = password;
-  }
-
-  public Set<Role> getRoles() {
-    return roles;
-  }
-
-  public void setRoles(Set<Role> roles) {
-    this.roles = roles;
   }
 }

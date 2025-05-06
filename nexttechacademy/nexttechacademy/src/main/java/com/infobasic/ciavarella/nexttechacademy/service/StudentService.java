@@ -2,6 +2,7 @@ package com.infobasic.ciavarella.nexttechacademy.service;
 
 import com.infobasic.ciavarella.nexttechacademy.exception.ResourceNotFoundException;
 import com.infobasic.ciavarella.nexttechacademy.model.Student;
+import com.infobasic.ciavarella.nexttechacademy.model.Teacher;
 import com.infobasic.ciavarella.nexttechacademy.model.User;
 import com.infobasic.ciavarella.nexttechacademy.repository.StudentRepository;
 import com.infobasic.ciavarella.nexttechacademy.repository.UserRepository;
@@ -43,14 +44,18 @@ public class StudentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with email: " + email));
     }
 
-    @Transactional
+    public Student saveStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    /*@Transactional
     public Student createStudent(Student student, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
 
         student.setUser(user);
         return studentRepository.save(student);
-    }
+    }*/
 
     @Transactional
     public Student updateStudent(Long studentId, Student studentDetails) {

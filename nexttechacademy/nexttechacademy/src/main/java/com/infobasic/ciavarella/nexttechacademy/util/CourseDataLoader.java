@@ -20,23 +20,23 @@ public class CourseDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("Inserimento corsi di test nel database...");
+        log.info("Inclusion of test courses in the database...");
 
         Course mathCourse = new Course();
-        mathCourse.setCourseName("Matematica Avanzata");
-        mathCourse.setDescription("Corso di matematica avanzata con calcolo differenziale e integrale");
+        mathCourse.setCourseName("Python");
+        mathCourse.setDescription("Course in Python Programming");
         mathCourse.setAccademicYear("2023/2024");
         mathCourse.setCfu(12);
 
         Course csCourse = new Course();
-        csCourse.setCourseName("Programmazione Java");
-        csCourse.setDescription("Corso di programmazione avanzata in Java");
+        csCourse.setCourseName("Java");
+        csCourse.setDescription("Course in Java Programming");
         csCourse.setAccademicYear("2024/2025");
         csCourse.setCfu(10);
 
         Course dbCourse = new Course();
         dbCourse.setCourseName("Database SQL");
-        dbCourse.setDescription("Corso sui database relazionali e SQL");
+        dbCourse.setDescription("Course on relational databases and SQL");
         dbCourse.setAccademicYear("2024/2025");
         dbCourse.setCfu(8);
 
@@ -44,6 +44,6 @@ public class CourseDataLoader implements CommandLineRunner {
         courseService.createCourse(csCourse);
         courseService.createCourse(dbCourse);
 
-        log.info("Corsi di test inseriti con successo nel database.");
+        log.info("Test courses successfully entered into the database.");
     }
 }

@@ -26,10 +26,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
-/**
- * Controller per la gestione dell'autenticazione e della registrazione.
- */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -50,10 +46,6 @@ public class AuthController {
   @Autowired
   JwtUtils jwtUtils;
 
-
-  /**
-  * Gestisce il login degli utenti.
-  */
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -77,13 +69,10 @@ public class AuthController {
         roles));
   }
 
-  /**
-   * Gestisce la registrazione di nuovi utenti.
-   */
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-    
-    // Verifica se il nome utente è già in uso    
+
+    // Verifica se il nome utente è già in uso
     if (authUserRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
           .badRequest()

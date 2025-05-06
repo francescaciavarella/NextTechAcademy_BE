@@ -46,11 +46,11 @@ public class TeacherController {
         return new ResponseEntity<>(teacher, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Teacher> createTeacher(
+    @PostMapping("/teacher/{teacherId}")
+    public ResponseEntity<Teacher> saveTeacher(
             @RequestBody Teacher teacher,
             @RequestParam Long userId) {
-        Teacher createdTeacher = teacherService.createTeacher(teacher, userId);
+        Teacher createdTeacher = teacherService.saveTeacher(teacher);
         return new ResponseEntity<>(createdTeacher, HttpStatus.CREATED);
     }
 

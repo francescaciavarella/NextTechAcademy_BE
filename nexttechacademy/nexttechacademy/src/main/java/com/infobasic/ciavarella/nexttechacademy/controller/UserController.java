@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -49,12 +50,6 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
     @GetMapping("/role/{role}")
     public ResponseEntity<List<User>> getUsersByRole(@PathVariable String role) {
         List<User> users = userService.getUsersByRole(role);
@@ -77,6 +72,12 @@ public class UserController {
     public ResponseEntity<List<User>> getAllAdminUsers() {
         List<User> users = userService.getAllAdminUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 

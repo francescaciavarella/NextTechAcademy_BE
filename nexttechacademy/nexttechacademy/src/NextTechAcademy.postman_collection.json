@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "fcd26767-d9a9-4abd-b3fa-f7540f9948d3",
+		"name": "NextTechAcademy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38624432"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"newuser\",\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"securepassword\",\r\n  \"role\": [\"student\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"newuser\",\r\n    \"password\": \"securepassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/auth/signin"
+			},
+			"response": []
+		},
+		{
+			"name": "AllUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQ0MTk2LCJleHAiOjE3NDY2MzA1OTZ9.9dCT2owCNL5x59Wvw8nxib-TCDudCksjjHIkA_Yjex-_xa78OSvV23IGXjYld12b52Y4WIyZXjtWwwJFCrZsFA"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "UserById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/3"
+			},
+			"response": []
+		},
+		{
+			"name": "UserByEmail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/email/student1@example.com"
+			},
+			"response": []
+		},
+		{
+			"name": "UserByRole",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/role/ADMIN"
+			},
+			"response": []
+		}
+	]
+}

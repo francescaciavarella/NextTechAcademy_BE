@@ -26,27 +26,29 @@ public class AuthDataLoadRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        // Check if roles already exist
+        if (authRoleRepository.count() == 0) {
+            Role r_admin = new Role();
+            r_admin.setName(ERole.ROLE_ADMIN);
+            authRoleRepository.save(r_admin);
 
-        Role r_admin = new Role();
-        r_admin.setName(ERole.ROLE_ADMIN);
-        authRoleRepository.save(r_admin);
+            Role r_student = new Role();
+            r_student.setName(ERole.ROLE_STUDENT);
+            authRoleRepository.save(r_student);
 
-        Role r_student = new Role();
-        r_student.setName(ERole.ROLE_STUDENT);
-        authRoleRepository.save(r_student);
+            Role r_teacher = new Role();
+            r_teacher.setName(ERole.ROLE_TEACHER);
+            authRoleRepository.save(r_teacher);
 
-        Role r_teacher = new Role();
-        r_teacher.setName(ERole.ROLE_TEACHER);
-        authRoleRepository.save(r_teacher);
+            // Create users with roles
+            AuthUser u_teacher = new AuthUser("teacherEmail@gmail.com", encoder.encode("mygoodpassword"), r_teacher);
+            authUserRepository.save(u_teacher);
 
-        AuthUser u_teacher = new AuthUser("teacherEmail@gmail.com", encoder.encode("mygoodpassword"), r_teacher);
-        authUserRepository.save(u_teacher);
+            AuthUser u_admin = new AuthUser("adminEmail@gmail.com", encoder.encode("mygoodpassword"), r_admin);
+            authUserRepository.save(u_admin);
 
-        AuthUser u_admin = new AuthUser("adminEmail@gmail.com", encoder.encode("mygoodpassword"), r_admin);
-        authUserRepository.save(u_admin);
-
-        AuthUser u_student = new AuthUser("studentEmail@gmail.com", encoder.encode("mygoodpassword"), r_student);
-        authUserRepository.save(u_student);
-
+            AuthUser u_student = new AuthUser("studentEmail@gmail.com", encoder.encode("mygoodpassword"), r_student);
+            authUserRepository.save(u_student);
+        }
     }
-}   
+}

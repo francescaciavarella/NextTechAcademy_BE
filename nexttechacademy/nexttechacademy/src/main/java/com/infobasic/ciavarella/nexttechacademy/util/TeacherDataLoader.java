@@ -38,14 +38,18 @@ public class TeacherDataLoader implements CommandLineRunner {
         teacher1.setFirstName("Laura");
         teacher1.setLastName("Bianchi");
         teacher1.setBirthDate(LocalDate.of(1975, 3, 10));
+        teacher1.setAddress("Street 19");
+        teacher1.setPhoneNumber("3729736594");
 
         Teacher teacher2 = new Teacher();
         teacher2.setFirstName("Marco");
         teacher2.setLastName("Verdi");
         teacher2.setBirthDate(LocalDate.of(1982, 7, 22));
+        teacher2.setAddress("Street 1");
+        teacher2.setPhoneNumber("3729736294");
 
-        teacherService.createTeacher(teacher1, teacherUser1.getTeacher().getTeacherId());
-        teacherService.createTeacher(teacher2, teacherUser2.getTeacher().getTeacherId());
+        teacherService.saveTeacher(teacher1);
+        teacherService.saveTeacher(teacher2);
 
         log.info("Insegnanti di test inseriti con successo nel database.");
     }

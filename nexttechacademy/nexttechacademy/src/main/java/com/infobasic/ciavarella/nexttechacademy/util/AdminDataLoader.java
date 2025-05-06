@@ -26,7 +26,7 @@ public class AdminDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("Inserimento admin di test nel database...");
+        log.info("Test admin entry in database...");
 
         User adminUser = userRepository.findByEmail("admin@example.com")
                 .orElseThrow(() -> new RuntimeException("Admin user not found"));
@@ -36,9 +36,8 @@ public class AdminDataLoader implements CommandLineRunner {
         admin.setLastName("Rossi");
         admin.setBirthDate(LocalDate.of(1980, 5, 15));
 
-        adminService.createAdmin(admin, admin.getAdminId());
+        adminService.saveAdmin(admin);
 
-        log.info("Admin di test inserito con successo nel database.");
+        log.info("Test admin successfully entered into the database.");
     }
 }
-

@@ -45,9 +45,9 @@ public class AdminController {
         return new ResponseEntity<>(admin, HttpStatus.OK);
     }
 
-    @PostMapping("/user/{userId}")
-    public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin, @PathVariable Long userId) {
-        Admin createdAdmin = adminService.createAdmin(admin, userId);
+    @PostMapping("/admin/{adminId}")
+    public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin) {
+        Admin createdAdmin = adminService.saveAdmin(admin);
         return new ResponseEntity<>(createdAdmin, HttpStatus.CREATED);
     }
 

@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,6 +19,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
+    @Column(unique = true, nullable = false)
+    private String username;
+
     @Email
     @Column(unique = true, nullable = false)
     private String email;
@@ -25,6 +30,9 @@ public class User {
     private String password;
 
     private String role;
+
+    @Column(name = "registration_date", nullable = false)
+    private LocalDate registrationDate;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Admin admin;

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -38,8 +39,9 @@ public class UserService {
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new IllegalArgumentException("Email already in use: " + user.getEmail());
         }
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setUsername(user.getUsername());
+        user.setRegistrationDate(LocalDate.now());
         return userRepository.save(user);
     }
 

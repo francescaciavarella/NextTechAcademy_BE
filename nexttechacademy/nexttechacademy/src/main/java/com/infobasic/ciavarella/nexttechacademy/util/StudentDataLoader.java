@@ -41,23 +41,29 @@ public class StudentDataLoader implements CommandLineRunner {
         student1.setFirstName("Giulia");
         student1.setLastName("Neri");
         student1.setBirthDate(LocalDate.of(2000, 5, 15));
+        student1.setAddress("Street 46");
+        student1.setPhoneNumber("3729736194");
         student1.setEnrollmentDate(LocalDate.of(2020, 9, 1));
 
         Student student2 = new Student();
         student2.setFirstName("Luca");
         student2.setLastName("Gialli");
         student2.setBirthDate(LocalDate.of(2001, 8, 20));
+        student2.setAddress("Street 98");
+        student2.setPhoneNumber("3729736254");
         student2.setEnrollmentDate(LocalDate.of(2020, 9, 1));
 
         Student student3 = new Student();
         student3.setFirstName("Sofia");
         student3.setLastName("Blu");
         student3.setBirthDate(LocalDate.of(1999, 3, 10));
+        student3.setAddress("Street 5");
+        student3.setPhoneNumber("3729746294");
         student3.setEnrollmentDate(LocalDate.of(2019, 9, 1));
 
-        studentService.createStudent(student1, studentUser1.getStudent().getStudentId());
-        studentService.createStudent(student2, studentUser2.getStudent().getStudentId());
-        studentService.createStudent(student3, studentUser3.getStudent().getStudentId());
+        studentService.saveStudent(student1);
+        studentService.saveStudent(student2);
+        studentService.saveStudent(student3);
 
         log.info("Studenti di test inseriti con successo nel database.");
     }
