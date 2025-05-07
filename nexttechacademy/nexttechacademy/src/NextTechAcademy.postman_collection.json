@@ -7,156 +7,287 @@
 	},
 	"item": [
 		{
-			"name": "SignUp",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {}
+			"name": "User",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"newuser\",\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"securepassword\",\r\n  \"role\": [\"student\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/signup"
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"newuser\",\r\n  \"email\": \"newuser@example.com\",\r\n  \"password\": \"securepassword\",\r\n  \"role\": [\"student\"]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+				{
+					"name": "SignInNewUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"newuser\",\r\n    \"password\": \"securepassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/signin"
+					},
+					"response": []
 				},
-				"url": "http://localhost:8080/api/auth/signup"
-			},
-			"response": []
+				{
+					"name": "AllUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NjEzMjk3LCJleHAiOjE3NDY2OTk2OTd9.Ih-leEjjdqfuq4W5L6bQk--1-F-YIRnzEX3NszjlNevassm_B25mz8y6ed324rsnYs0cOiy-5BZTL2DlSyZP6Q"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "UserById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/users/3"
+					},
+					"response": []
+				},
+				{
+					"name": "UserByEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/users/email/student1@example.com"
+					},
+					"response": []
+				},
+				{
+					"name": "UserByRole",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/users/role/ADMIN"
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "SignIn",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {}
+			"name": "Admin",
+			"item": [
+				{
+					"name": "SignInAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/signin"
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"newuser\",\r\n    \"password\": \"securepassword\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/auth/signin"
-			},
-			"response": []
+				{
+					"name": "AllAdmin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjYxMzI2MCwiZXhwIjoxNzQ2Njk5NjYwfQ.zt6L0LQN3bJXRbuT_aGCWROAblOtMquW1iVtSIrwA5-c4m0IVReYv2fLpFXIGk2W-ZHTQ1-Zm6PmjSuuNRjGQw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/admins"
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "AllUsers",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQ0MTk2LCJleHAiOjE3NDY2MzA1OTZ9.9dCT2owCNL5x59Wvw8nxib-TCDudCksjjHIkA_Yjex-_xa78OSvV23IGXjYld12b52Y4WIyZXjtWwwJFCrZsFA"
-					}
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "SignInTeacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"teacher1\",\r\n    \"password\": \"teacher123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/signin"
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/users"
-			},
-			"response": []
+				{
+					"name": "AllTeacher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZWFjaGVyMSIsImlhdCI6MTc0NjYxMzUwMCwiZXhwIjoxNzQ2Njk5OTAwfQ.2QC_eWd92H4fMUXjY1bJvqm3BlPLg8It9l9XUm8UWKqpsZMiN5HGHCs5dZydDtpQgDIOf8Y9_Vy43dF5_J48pA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/teachers"
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "UserById",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
-					}
+			"name": "Student",
+			"item": [
+				{
+					"name": "SignInStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"student1\",\r\n    \"password\": \"student123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/signin"
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/users/3"
-			},
-			"response": []
-		},
-		{
-			"name": "UserByEmail",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
-					}
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/users/email/student1@example.com"
-			},
-			"response": []
-		},
-		{
-			"name": "UserByRole",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyIiwiaWF0IjoxNzQ2NTQzMTQ0LCJleHAiOjE3NDY2Mjk1NDR9.yR-QRhBclx7R7pjfICE_UhAJjAEmi4CYQb9xhSRNVckNk3dS0b0mwW7OMkfyzsL_xui-uN34mJyHXGAWAF7OTg"
-					}
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/users/role/ADMIN"
-			},
-			"response": []
+				{
+					"name": "AllStudent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdHVkZW50MSIsImlhdCI6MTc0NjYxMzU5MCwiZXhwIjoxNzQ2Njk5OTkwfQ.38dhyPhZdPlXinnE4tNzVkzlga-6gZpF-W0GINWcci30rUvJj8azmHHr6dcHk3Wv2SwZcnDRTrnrzKT7mGUApw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/students"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
